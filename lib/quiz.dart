@@ -3,7 +3,7 @@ import 'package:quiz_app/start_screen.dart';
 import 'package:quiz_app/question_screen.dart';
 
 class Quiz extends StatefulWidget {
-  const Quiz(this.startQuiz, {super.key});
+  const Quiz(this.startQuiz, {super.key}); // positional parameter, requires this.startQuiz when creating Quiz instance
 
   final void Function() startQuiz;
 
