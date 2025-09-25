@@ -5,10 +5,6 @@ class StartScreen extends StatelessWidget {
 
   final void Function() startQuiz;
 
-  onStart() {
-    return "";
-  }
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -27,7 +23,7 @@ class StartScreen extends StatelessWidget {
         const SizedBox(height: 30),
         OutlinedButton.icon(
           icon: const Icon(Icons.arrow_right_alt),
-          onPressed: onStart,
+          onPressed: startQuiz,
           style: OutlinedButton.styleFrom(
             foregroundColor: Colors.white,
           ),
