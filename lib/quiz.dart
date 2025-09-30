@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/start_screen.dart';
 import 'package:quiz_app/question_screen.dart';
+import 'package:quiz_app/results_screen.dart';
+import 'package:quiz_app/data/questions.dart';
 
 class Quiz extends StatefulWidget {
   const Quiz(this.startQuiz, {super.key}); // positional parameter, requires this.startQuiz when creating Quiz instance
@@ -19,6 +21,12 @@ class _QuizState extends State<Quiz> {
 
   void chooseAnswer(String answer) {
     selectedAnswers.add(answer);
+    if (selectedAnswers.length == QUESTIONS.length) {
+      setState(() {
+        // selectedAnswers = []; // reset for a new quiz call @ results screen once page is loaded
+        activeScreen = ResultsScreen(selectedAnswers);
+      });
+    }
   }
 
   void switchScreen() {
