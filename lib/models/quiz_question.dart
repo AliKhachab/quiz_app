@@ -7,3 +7,9 @@ class QuizQuestion {
     required this.answers,
   });
 }
+
+List<String> getShuffledAnswers(){
+    final shuffledAnswers = List.of(answers);
+    shuffledAnswers.shuffle();
+    return shuffledAnswers;
+  }
