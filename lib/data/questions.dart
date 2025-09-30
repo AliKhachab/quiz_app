@@ -1,7 +1,7 @@
 import '../models/quiz_question.dart';
 
 //Right answer is in index 0.
-const questions = [
+const QUESTIONS = [
   QuizQuestion(
     text: "Who gave Shanks his scar?",
     answers: [
