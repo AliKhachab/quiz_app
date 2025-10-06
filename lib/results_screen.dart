@@ -3,11 +3,12 @@ import 'package:quiz_app/data/questions.dart';
 import 'package:quiz_app/question_summary.dart';
 
 class ResultsScreen extends StatelessWidget{
-  const ResultsScreen(this.chosenAnswers, {super.key});
+  const ResultsScreen(this.chosenAnswers, this.restartQuiz, {super.key});
 
   final List<String> chosenAnswers;
+  final void Function() restartQuiz;
 
-  List<Map<String, Object>> getSummaryData() {
+  List<Map<String, Object>> get summaryData {
     List<Map<String, Object>> summary = [];
     for (var i = 0; i < chosenAnswers.length; i++) {
       summary.add({
@@ -20,6 +21,12 @@ class ResultsScreen extends StatelessWidget{
     return summary;
   }
 
+  int get correctAnswers {
+    return summaryData.where((data) {
+      return data['user_answer'] == data['correct_answer'];
+    }).length;
+  }
+
   @override
   Widget build(context)
   {
@@ -30,12 +37,14 @@ class ResultsScreen extends StatelessWidget{
         child:  Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children:  [
-            const Text('You answered X out of Y questions Correctly'),
+            Text('You answered $correctAnswers out of ${QUESTIONS.length} questions Correctly'),
             const SizedBox(height:30,),
-            QuestionSummary(summaryData: getSummaryData()),
+            QuestionSummary(summaryData: summaryData),
             const SizedBox(height:30,),
             TextButton(
-              onPressed: (){},
+              onPressed: (){
+                restartQuiz();
+              },
               child: const Text('Restart Quiz'),
             )
           ],
