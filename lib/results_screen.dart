@@ -45,11 +45,16 @@ class ResultsScreen extends StatelessWidget {
               child: SingleChildScrollView(child: QuestionSummary(summaryData)),
             ),
             const SizedBox(height: 30),
-            TextButton(
+            OutlinedButton(
               onPressed: () {
                 restartQuiz();
               },
-              child: const Text('Restart Quiz'),
+              child: const Text(
+                'Restart Quiz',
+                style: TextStyle(
+                  color: Colors.white
+                ),
+              ),
             ),
           ],
         ),
